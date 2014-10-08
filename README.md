@@ -3,7 +3,7 @@ To use:
 
 1)Install the "request" library
 
-	npm install request
+        npm install request
  
 2) Obtain your Coinbase API Key and API Secret
 
@@ -12,7 +12,7 @@ To use:
 
 4) Type the following in the console.
 
-$nodejs get_balance.js
+        $nodejs get_balance.js
 
 You should see something like this print to the console
 
@@ -21,7 +21,7 @@ You should see something like this print to the console
 
 5)Type the following in the console (if you actually want to send a bitcoin...)
 
-$nodejs send_bitcoin.js
+        $nodejs send_bitcoin.js
 
 You should see something like this print to the console
 
