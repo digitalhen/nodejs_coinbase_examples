@@ -7,9 +7,8 @@ To use:
  
 2) Obtain your Coinbase API Key and API Secret
 
-3) In all of the examples, replace API_KEY, 
-   API_SECRET, and ACCOUNT_ID with your actual
-   key, secret, and account id.
+3) In all of the examples, replace the api key,
+   api secret and account id with real ones
 
 4) Type the following in the console.
 
