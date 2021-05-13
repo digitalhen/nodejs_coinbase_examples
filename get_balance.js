@@ -1,31 +1,25 @@
-crypto = require('crypto');
-request = require('request');
-
-function callback(error, response, body) {
-   console.log(body);
-}
-
-/*
-//fake account id.  Replace with a real one.
-account_id = '1234asdf1234asdf0100000a' 
-*/
+var crypto = require('crypto');
+var request = require('request');
+var url = require('url');
 
 //fake api secret.  Replace with a real one.
-api_secret = 'asD1234asDF1234aSDF1234AsdF1234a' ;
+api_secret = 'dummyapisecret' ;
 
 //fake api key.  Replace with a real one.
-api_key = '1ASDFaSDF1234ASd';
+api_key = 'dummyapikey';
 
-url = 'https://api.coinbase.com/v2/accounts'
+coinbaseUrl = 'https://api.coinbase.com/v2/accounts'
 
 epoch = Math.floor(+new Date() / 1000);
 
+console.log(request.method);
+
 my_hmac = crypto.createHmac('sha256', api_secret);
-my_hmac.update(epoch + 'POST' + '/v2/accounts' + '');
+my_hmac.update(epoch + "GET" + url.parse(coinbaseUrl).pathname + '');
 signature = my_hmac.digest('hex');
 
 request_options = {
-  url: url,
+  url: coinbaseUrl,
   headers : {'CB-ACCESS-KEY' : api_key,
              'CB-ACCESS-SIGN': signature, 
              'CB-ACCESS-TIMESTAMP': epoch,
@@ -35,9 +29,12 @@ request_options = {
 
 };
 
-request(request_options,callback);
-
-
+request(request_options, (err, res, body) => {
+    if (err) {
+        return console.log(err);
+    }
+    console.log(JSON.parse(body).data[0]);
+});
 
 
 
